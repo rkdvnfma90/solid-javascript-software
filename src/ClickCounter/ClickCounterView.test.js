@@ -1,4 +1,4 @@
-import { App } from './ClickCounter.js'
+import { App } from './ClickCounterView.js'
 
 // 보이는 부분 (화면)
 /**
@@ -24,7 +24,7 @@ describe('클릭카운터 뷰', () => {
     it('클릭카운터의 getValue() 값을 출력한다.', () => {
       const counterValue = counter.getValue()
       view.updateView()
-      expect($update.innerHTML).expect(counterValue.toString())
+      expect($update.innerHTML).toBe(counterValue.toString())
     })
   })
 })
