@@ -2,9 +2,16 @@ import { App } from './ClickCounter.js'
 
 // 보이지 않는 부분 (비즈니스 로직)
 describe('클릭카운터', () => {
-  let counter
+  let counter, data
+
+  it('초기값을 주입하지 않으면 에러가 발생한다.', () => {
+    const actual = () => (counter = App.ClickCounter())
+    expect(actual).toThrowError()
+  })
+
   beforeEach(() => {
-    counter = App.ClickCounter()
+    data = { value: 0 }
+    counter = App.ClickCounter(data)
   })
 
   describe('getValue()', () => {

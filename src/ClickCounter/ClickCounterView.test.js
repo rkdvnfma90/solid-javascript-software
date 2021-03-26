@@ -15,7 +15,8 @@ import { App } from './ClickCounterView.js'
 describe('클릭카운터 뷰', () => {
   let ClickCounter, $update, $trigger, view
   beforeEach(() => {
-    ClickCounter = App.ClickCounter()
+    const data = { value: 0 }
+    ClickCounter = App.ClickCounter(data)
     $update = document.createElement('span')
     $trigger = document.createElement('button') // 클릭 이벤트를 바인당할 엘리먼트
     view = App.ClickCounterView(ClickCounter, { $update, $trigger })
