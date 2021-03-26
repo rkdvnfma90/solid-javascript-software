@@ -9,6 +9,10 @@ App.ClickCounterView = (clickCounter, $update) => {
     updateView() {
       $update.innerHTML = clickCounter.getValue()
     },
+    increaseAndUpdateView() {
+      clickCounter.increase()
+      this.updateView()
+    },
   }
 }
 
