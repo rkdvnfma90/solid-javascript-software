@@ -45,11 +45,11 @@ describe('클릭카운터 뷰', () => {
 
   // 이렇게 두 가지 기능이 있다면, 하나씩 분리하여 테스트 하자!
   describe('increaseAndUpdateView() 는 ', () => {
-    it('클릭카운터의 increase를 실행하고', () => {
-      // 클릭카운터 모듈의 increase 함수를 감시한다.
-      spyOn(ClickCounter, 'increase')
+    it('클릭카운터의 count를 실행하고', () => {
+      // 클릭카운터 모듈의 count 함수를 감시한다.
+      spyOn(ClickCounter, 'count')
       view.increaseAndUpdateView()
-      expect(ClickCounter.increase).toHaveBeenCalled()
+      expect(ClickCounter.count).toHaveBeenCalled()
     })
 
     it('updateView를 실행한다.', () => {

@@ -12,7 +12,7 @@ App.ClickCounterView = (clickCounter, { $update, $trigger }) => {
       $update.innerHTML = clickCounter.getValue()
     },
     increaseAndUpdateView() {
-      clickCounter.increase()
+      clickCounter.count()
       this.updateView()
     },
   }
