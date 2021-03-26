@@ -13,16 +13,29 @@ import { App } from './ClickCounterView.js'
  * 하나의 기능단위로 모듈을 분리할 수 있기 때문에 단일 책임의 원칙을 지킬 수 있다.
  */
 describe('클릭카운터 뷰', () => {
-  let counter, $update, view
+  let ClickCounter, $update, view
   beforeEach(() => {
-    counter = App.ClickCounter()
+    ClickCounter = App.ClickCounter()
     $update = document.createElement('span')
-    view = App.ClickCounterView(counter, $update)
+    view = App.ClickCounterView(ClickCounter, $update)
+  })
+
+  it('ClickCounter를 주입하지 않으면 에러를 던진다.', () => {
+    const clickCounter = null
+    const $update = document.createElement('span')
+    const actual = () => App.ClickCounterView(clickCounter, $update)
+    expect(actual).toThrowError()
+  })
+
+  it('$update를 주입하지 않으면 에러를 던진다.', () => {
+    const $update = null
+    const actual = () => App.ClickCounterView(ClickCounter, $update)
+    expect(actual).toThrowError()
   })
 
   describe('updateView()', () => {
     it('클릭카운터의 getValue() 값을 출력한다.', () => {
-      const counterValue = counter.getValue()
+      const counterValue = ClickCounter.getValue()
       view.updateView()
       expect($update.innerHTML).toBe(counterValue.toString())
     })

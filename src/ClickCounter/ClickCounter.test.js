@@ -1,5 +1,6 @@
 import { App } from './ClickCounter.js'
 
+// 보이지 않는 부분 (비즈니스 로직)
 describe('클릭카운터', () => {
   let counter
   beforeEach(() => {
