@@ -21,7 +21,9 @@
 
 ## Jest
 
-Jest란? 자바스크립트의 테스트 라이브러리이다.
+### Jest란?
+
+자바스크립트의 테스트 라이브러리이다.
 
 테스트 꾸러미
 
@@ -67,3 +69,70 @@ Jest란? 자바스크립트의 테스트 라이브러리이다.
 
 1. 코드를 UI에서 완전히 분리한다. (HTML에서 JS 코드를 떼어내면 비즈니스 로직만 테스트할 수 있음)
 2. 자바스크립트를 별도의 파일로 분리한다. (다른 곳에서 재사용할 수 있고, 테스트성도 좋아진다.)
+
+---
+
+## 모듈 패턴
+
+### 모듈 패턴이란?
+
+함수로 데이터를 감추고 모듈 API를 담고있는 객체를 반환하는 패턴.
+크게 본다면 2가지로 나눠볼 수 있다.
+
+1. 임의 함수를 호출하여 생성하는 모듈
+
+```javascript
+// app의 네임스페이스를 만든다.
+const App = App || {}
+
+App.person = function (God) {
+  // name 변수는 모듈안에서만 접근이 가능하다.
+  const name = God.makeName()
+
+  // API 노출
+  return {
+    getName: function () {
+      return name
+    },
+    setName: function (newName) {
+      name = newName
+    },
+  }
+}
+```
+
+```javascript
+// 아래와 같이 사용한다.
+const person = App.person(God)
+person.getName()
+```
+
+2. 즉시 실행 함수 기반의 모듈 (싱글톤 인스턴스가 됨)
+
+```javascript
+const App = App || {}
+
+App.person = (function (God) {
+  let name = ''
+
+  return {
+    getName(God) {
+      name = name || God.makeName()
+      return name
+    },
+    setName(newName) {
+      name = newName
+    },
+  }
+})() // 함수 선언 즉시 실행한다. (싱글톤)
+```
+
+```javascript
+// 아래와 같이 사용한다.
+App.person.getName(God)
+```
+
+### 모듈 생성 원칙
+
+1. 단일 책임 원칙에 따라 모듈은 한 가지 역할만 한다. 그 역할만 집중함으로서 모듈을 더 튼튼하게 한다.
+2. 모듈 자신이 사용할 객체가 있다면 `의존성 주입` 형태로 제공하거나 팩토리 형태로 주입한다. 그래야 테스트 하기 쉽다.
