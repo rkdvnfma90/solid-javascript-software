@@ -1,9 +1,20 @@
 import { App } from './ClickCounterView.js'
 
-const clickCounter = App.ClickCounter()
-const $update = document.querySelector('#counter-display')
-const $trigger = document.querySelector('#btn-increase')
-const view = App.ClickCounterView(clickCounter, { $update, $trigger })
-view.updateView()
+const data = { value: 0 }
+const counterDesc = App.ClickCounter(data).setCountFn((v) => v - 1)
+const counterInc = App.ClickCounter(data).setCountFn((v) => v + 2)
 
-console.log($update, $trigger, view)
+const $buttonDesc = document.querySelector('#btn-desc')
+const $buttonInc = document.querySelector('#btn-inc')
+const $update = document.querySelector('#counter-display')
+
+const descCounterView = App.ClickCounterView(counterDesc, {
+  $update,
+  $trigger: $buttonDesc,
+})
+const incCounterView = App.ClickCounterView(counterInc, {
+  $update,
+  $trigger: $buttonInc,
+})
+
+descCounterView.updateView()
