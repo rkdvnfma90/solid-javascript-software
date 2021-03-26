@@ -43,7 +43,11 @@
 
 beforeEach -> it 함수 호출 이전에 실행되는 함수이다.
 
-- `beforeEach()`
+- `beforeEach(함수)`
+
+에러 처리
+
+- `expect(함수).toThrowError()`
 
 ---
 
