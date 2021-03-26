@@ -1,0 +1,16 @@
+{
+  "name": "solid-javascript-software",
+  "version": "1.0.0",
+  "description": "## 단위 테스트 (unit test)",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll --verbose"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jest": "^26.0.22",
+    "jest": "^26.6.3"
+  }
+}
