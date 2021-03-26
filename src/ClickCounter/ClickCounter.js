@@ -1,9 +1,10 @@
 var App = App || {}
 
 App.ClickCounter = () => {
+  let value = 0
   return {
     getValue() {
-      return 0
+      return value
     },
   }
 }
